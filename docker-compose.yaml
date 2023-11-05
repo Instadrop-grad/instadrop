@@ -1,0 +1,21 @@
+
+version: '3'
+
+services:
+  database:
+    image: 'postgres:latest'
+    environment:
+      POSTGRES_USER: instadrop
+      POSTGRES_PASSWORD: instadrop
+      POSTGRES_DB: instadrop
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-q", "-U", "postgres" ]
+      timeout: 45s
+      interval: 10s
+      retries: 10
+    restart: always 
+    volumes: 
+      - ./db-data/:/var/lib/postgresql/data/
+    ports:
+      - 5432:5432
+
