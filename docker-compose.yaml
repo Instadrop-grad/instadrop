@@ -7,7 +7,7 @@ services:
     environment:
       POSTGRES_USER: instadrop
       POSTGRES_PASSWORD: instadrop
-      POSTGRES_DB: instadrop
+      POSTGRES_DB: drop
     healthcheck:
       test: [ "CMD", "pg_isready", "-q", "-U", "postgres" ]
       timeout: 45s
