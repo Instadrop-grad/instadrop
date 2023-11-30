@@ -10,12 +10,14 @@ services:
       POSTGRES_DB: drop
     healthcheck:
       test: [ "CMD", "pg_isready", "-q", "-U", "postgres" ]
-      timeout: 45s
+      timeout: 30s
       interval: 10s
       retries: 10
     restart: always 
     volumes: 
-      - ./db-data/:/var/lib/postgresql/data/
+      - instadrop-data:/var/lib/postgresql/data/
     ports:
       - 5432:5432
-
+volumes:
+  instadrop-data:
+    driver: local
